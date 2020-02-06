@@ -1,0 +1,41 @@
+<app-loader *ngIf="loading"></app-loader>
+
+<div fxLayout="row wrap" fxLayoutAlign="space-around" *ngIf="player">
+
+  <mat-card fxFlex="85%" fxFlex.sm="90%" fxFlex.xs="100%">
+    <mat-card-header>
+      <mat-card-title>{{ player.name }}<span *ngIf="player.title">, the {{ player.title }}</span></mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <mat-progress-bar mode="determinate" [value]="player.xp.__current / player.xp.maximum * 100"></mat-progress-bar>
+      <p>
+        Player since {{ player.createdAt | date:'medium' }} (Currently {{ player.loggedIn ? 'Logged In' : 'Not Logged In' }})
+      </p>
+      <p>
+        Level <span *ngIf="player.ascensionLevel">{{ player.ascensionLevel }}★</span> {{ player.level.__current }}/{{ player.level.maximum }} {{ player.gender }} {{ player.profession }}
+      </p>
+      <p>
+        Currently in {{ player.map }}
+      </p>
+      <p>
+        {{ player.gold | number }} gold
+      </p>  
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card fxFlex="85%" fxFlex.sm="90%" fxFlex.xs="100%">
+    <mat-card-header>
+      <mat-card-title>Stats</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div fxLayout="row wrap" fxLayoutAlign="space-around">
+        <div *ngFor="let stat of ['hp', 'xp', 'gold', 'str', 'dex', 'con', 'int', 'agi', 'luk']" fxFlex="33%">
+          {{ player.stats[stat] | number }} {{ stat | uppercase }} 
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+</div>

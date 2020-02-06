@@ -1,0 +1,46 @@
+<app-loader *ngIf="loading"></app-loader>
+
+<div fxLayout="row wrap" fxLayoutAlign="space-around" *ngIf="guild">
+
+  <mat-card fxFlex="85%" fxFlex.sm="90%" fxFlex.xs="100%">
+    <mat-card-header>
+      <mat-card-title>{{ guild.name }} [{{ guild.tag }}]</mat-card-title>
+      <mat-card-subtitle>Level {{ guildLevel() }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <p>Recruitment: {{ guild.recruitment }}</p>
+      <p>Gold Tax: {{ guild.taxes.gold }}%</p>
+      <p>{{ guild.motd }}</p>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card fxFlex="85%" fxFlex.sm="90%" fxFlex.xs="100%">
+    <mat-card-header>
+      <mat-card-title>Members</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div fxLayout="row wrap" fxLayoutAlign="space-around">
+        <div *ngFor="let member of guild.members | keyvalue" fxFlex="33%" class="member">
+          <a [routerLink]="['/player', { name: member.key }]">{{ member.key }}</a> {{ symbolFor(member.value) }}
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card fxFlex="85%" fxFlex.sm="90%" fxFlex.xs="100%">
+    <mat-card-header>
+      <mat-card-title>Buildings</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div fxLayout="row wrap" fxLayoutAlign="space-around">
+        <div *ngFor="let building of guild.buildingLevels | keyvalue" fxFlex="33%" class="building">
+          {{ building.key }} (Lv. {{ building.value }})
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+</div>

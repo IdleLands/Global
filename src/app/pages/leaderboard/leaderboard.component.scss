@@ -1,0 +1,29 @@
+
+h2 {
+  text-align: center;
+}
+
+.group {
+  width: 100%;
+}
+
+.board-card {
+
+  padding: 1rem;
+
+  mat-card {
+    height: 200px;
+    max-height: 200px;
+  }
+
+  .board-row {
+    .name {
+      height: 2rem;
+      font-weight: bold;
+    }
+
+    .value {
+      text-align: right;
+    }
+  }
+}

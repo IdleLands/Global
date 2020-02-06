@@ -1,0 +1,33 @@
+<app-loader *ngIf="loading"></app-loader>
+
+<div fxLayout="row wrap" fxLayoutAlign="space-around" *ngIf="leaderboard">
+
+  <div *ngFor="let board of leaderboard" class="group">
+    <h2>{{ board.cat }}</h2>
+
+    <div fxLayout="row wrap" fxLayoutAlign="space-around">
+
+      <div *ngFor="let sub of board.children" fxFlex="33%" fxFlex.sm="50%" fxFlex.xs="100%" class="board-card">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>{{ sub.name }}</mat-card-title>
+          </mat-card-header>
+
+          <mat-card-content>
+            <div class="board-row" *ngFor="let result of sub.results; let i = index" fxLayout="row" fxLayoutAlign="space-between">
+              <div fxFlex="50%" class="name">
+                #{{ i + 1}} {{ result.name }}
+              </div>
+              <div fxFlex="50%" class="value">
+                {{ result.exactValue }}
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+  
+      </div>
+    </div>
+    
+  </div>
+
+</div>

@@ -1,0 +1,29 @@
+
+<app-loader *ngIf="loading"></app-loader>
+
+<div fxLayout="row wrap">
+  <div *ngFor="let player of players" fxFlex="25%" fxFlex.sm="50%" fxFlex.xs="100%" class="player-card">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>{{ player.name }}</mat-card-title>
+        <mat-card-subtitle>
+          <span *ngIf="player.title">The {{ player.title }}</span>
+          &nbsp;
+        </mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p>
+          Level <span *ngIf="player.ascensionLevel">{{ player.ascensionLevel }}★</span> {{ player.level.__current }}/{{ player.level.maximum }} {{ player.profession }}
+        </p>
+        <p>
+          Currently in {{ player.map }}
+        </p>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <a mat-button [routerLink]="['/player', { name: player.name }]">View</a>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
