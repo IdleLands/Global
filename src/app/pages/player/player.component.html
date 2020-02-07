@@ -20,7 +20,7 @@
       </p>
       <p>
         {{ player.gold | number }} gold
-      </p>  
+      </p>
     </mat-card-content>
   </mat-card>
 
@@ -31,8 +31,9 @@
 
     <mat-card-content>
       <div fxLayout="row wrap" fxLayoutAlign="space-around">
-        <div *ngFor="let stat of ['hp', 'xp', 'gold', 'str', 'dex', 'con', 'int', 'agi', 'luk']" fxFlex="33%">
-          {{ player.stats[stat] | number }} {{ stat | uppercase }} 
+        <div style="margin-bottom: 5px;" *ngFor="let stat of ['hp', 'xp', 'gold', 'str', 'dex', 'con', 'int', 'agi', 'luk']" fxFlex="33%">
+          <img class="stat-icon" [src]="'https://play.idle.land/assets/icon/stat-' + stat + '.svg'">
+          <span class="stat">{{ stat | uppercase }}</span> {{  player.stats[stat] | number }}
         </div>
       </div>
     </mat-card-content>
