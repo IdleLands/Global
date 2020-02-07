@@ -16,7 +16,7 @@
           <mat-card-content>
             <div class="board-row" *ngFor="let result of sub.results; let i = index" fxLayout="row" fxLayoutAlign="space-between">
               <div fxFlex="50%" class="name">
-                #{{ i + 1}} {{ result.name }}
+                #{{ i + 1}} <a class="stealth-link" [routerLink]="['/player', { name: result.name }]">{{ result.name }}</a>
               </div>
               <div fxFlex="50%" class="value">
                 {{ result.exactValue }}

@@ -29,3 +29,12 @@ body {
 .text-small {
   font-size: 13px;
 }
+
+a.stealth-link{
+  color: inherit;
+  text-decoration: none;
+}
+
+a.stealth-link:hover{
+  text-decoration: underline;
+}
