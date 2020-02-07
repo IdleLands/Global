@@ -31,6 +31,9 @@ export class PlayerComponent implements OnInit {
   }
 
   public timeString(milliseconds) {
+    if (!milliseconds) {
+      return 'a long time';
+    }
     // Time since
     milliseconds = Date.now() - milliseconds;
     const keys = {
