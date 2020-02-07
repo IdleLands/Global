@@ -12,6 +12,7 @@ body {
 
 .stat{
   display: inline-block;
+  min-width: 40px;
   margin: 0 10px;
 }
 
@@ -19,4 +20,12 @@ body {
   width: 25px;
   height: 25px;
   vertical-align: middle;
+}
+
+.text-italic {
+  font-style: italic;
+}
+
+.text-small {
+  font-size: 13px;
 }

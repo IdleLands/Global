@@ -12,7 +12,7 @@ export class PlayerComponent implements OnInit {
   public loading = true;
   public player = null;
 
-  constructor(private router: Router, private route: ActivatedRoute, private api: APIService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private api: APIService) {  }
 
   ngOnInit() {
     const name = this.route.snapshot.paramMap.get('name');
@@ -28,6 +28,33 @@ export class PlayerComponent implements OnInit {
         this.loading = false;
         this.player = player;
       });
+  }
+
+  public timeString(milliseconds) {
+    // Time since
+    milliseconds = Date.now() - milliseconds;
+    const keys = {
+      year: 31557600,
+      month: 2629800,
+      week: 604800,
+      day: 86400,
+      hour: 3600,
+      minute: 60
+    };
+
+    let duration = Math.floor((milliseconds + 500) / 1000);
+    const resp = {};
+    const stamp = [];
+
+    Object.keys(keys).forEach((key) => {
+      resp[key] = Math.floor(duration / keys[key]);
+      duration -= resp[key] * keys[key];
+      if (resp[key] > 0) {
+        stamp.push(`${resp[key]} ${resp[key] === 1 ? key : key + 's'}`);
+      }
+    });
+
+    return stamp.join(', ');
   }
 
 }
