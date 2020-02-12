@@ -10,6 +10,13 @@ export class GuildsComponent implements OnInit {
 
   public loading = true;
   public guilds = [];
+  public sortBy = '';
+  public sortOptions = [
+    { name: 'Highest Level', value: 'level-asc' },
+    { name: 'Lowest Level', value: 'level-desc' },
+    { name: 'Name A-Z', value: 'name-asc' },
+    { name: 'Name Z-A', value: 'name-desc' }
+  ];
 
   constructor(private api: APIService) { }
 
@@ -19,6 +26,21 @@ export class GuildsComponent implements OnInit {
         this.loading = false;
         this.guilds = guilds;
       });
+  }
+
+  public sort() {
+    this.guilds.sort((a, b) => {
+      switch (this.sortBy) {
+        case 'level-desc':
+          return this.guildLevel(a) - this.guildLevel(b);
+        case 'level-asc':
+          return this.guildLevel(b) - this.guildLevel(a);
+        case 'name-asc':
+          return a.name.localeCompare(b.name);
+        case 'name-desc':
+          return b.name.localeCompare(a.name);
+      }
+    });
   }
 
   public guildLevel(guild): number {
