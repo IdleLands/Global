@@ -15,7 +15,8 @@ export class GuildsComponent implements OnInit {
     { name: 'Highest Level', value: 'level-asc' },
     { name: 'Lowest Level', value: 'level-desc' },
     { name: 'Name A-Z', value: 'name-asc' },
-    { name: 'Name Z-A', value: 'name-desc' }
+    { name: 'Name Z-A', value: 'name-desc' },
+    { name: 'Most Members', value: 'member-count' }
   ];
 
   constructor(private api: APIService) { }
@@ -39,6 +40,8 @@ export class GuildsComponent implements OnInit {
           return a.name.localeCompare(b.name);
         case 'name-desc':
           return b.name.localeCompare(a.name);
+        case 'member-count':
+          return Object.keys(b.members).length - Object.keys(a.members).length;
       }
     });
   }
