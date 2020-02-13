@@ -5,7 +5,7 @@
 
   <mat-form-field>
     <mat-label>Sort</mat-label>
-    <mat-select (selectionChange)="sort(sortBy)" [(value)]="sortBy">
+    <mat-select (selectionChange)="sort()" [(value)]="sortBy">
       <mat-option *ngFor="let option of sortOptions" [value]="option.value">
         {{option.name}}
       </mat-option>
