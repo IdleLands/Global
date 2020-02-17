@@ -18,10 +18,15 @@
         Player since {{ player.createdAt | date:'medium' }} {{ player.loggedIn ? '(Online Now)' : '' }} <br>
         <span class="text-small" *ngIf="!player.loggedIn">Online {{ timeString(player.lastOnline) }} ago. </span>
       </p>
+      
+      <p *ngIf="player.guildName">
+        In the <a [routerLink]="['/guild', { name: player.guildName }]">{{ player.guildName }}"</a> guild.
+      </p>
 
       <p>
         {{ player.loggedIn ? "Currently in" : "Last seen in" }} {{ player.map }}
       </p>
+      
       <p>
         {{ player.gold | number }} gold
       </p>
