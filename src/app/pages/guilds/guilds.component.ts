@@ -26,6 +26,8 @@ export class GuildsComponent implements OnInit {
       .subscribe((guilds: any[]) => {
         this.loading = false;
         this.guilds = guilds;
+        this.sortBy = 'level-asc';
+        this.sort();
       });
   }
 

@@ -66,6 +66,8 @@ export class PlayersComponent implements OnInit {
       .subscribe((players: any[]) => {
         this.loading = false;
         this.players = players;
+        this.sortBy = 'level-asc';
+        this.sort();
       });
   }
 
