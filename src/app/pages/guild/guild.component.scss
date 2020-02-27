@@ -8,7 +8,23 @@ mat-card {
   height: 25px;
 }
 
-.building {
-  margin-top: 5px;
-  height: 25px;
+.building,
+.resource,
+.crystal {
+  margin: 0;
+  padding: 5px 10px;
+  margin-top: -1px;
+}
+
+.compact-list div{
+  height: auto;
+  border: 1px solid #ccc;
+}
+
+.compact-list div span{
+  float: right;
+}
+
+.noshadow{
+  box-shadow: none;
 }

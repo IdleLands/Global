@@ -29,18 +29,51 @@
     </mat-card-content>
   </mat-card>
 
-  <mat-card fxFlex="85%" fxFlex.sm="90%" fxFlex.xs="100%">
-    <mat-card-header>
-      <mat-card-title>Buildings</mat-card-title>
-    </mat-card-header>
+</div>
 
-    <mat-card-content>
-      <div fxLayout="row wrap" fxLayoutAlign="space-around">
-        <div *ngFor="let building of guild.buildingLevels | keyvalue" fxFlex="33%" class="building">
-          {{ building.key }} (Lv. {{ building.value }})
+<div fxLayout="row wrap" fxLayoutAlign="space-around" *ngIf="guild">
+
+  <!-- I'm really not even sure what I'm doing here. This is almost certainly the wrong way to do it. Someone please fix -->
+  <div fxFlex="85%" fxFlex.sm="90%" fxFlex.xs="100%">
+
+    <mat-card fxFlex="49%" style="margin-right: 2%;" class=noshadow>
+      <mat-card-header>
+        <mat-card-title>Treasury</mat-card-title>
+        <mat-card-subtitle>Total Crystals: {{ getValuesTotal(guild.crystals).toLocaleString() }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div fxLayout="row wrap" fxLayoutAlign="space-around" class="compact-list">
+          
+          <div *ngFor="let resource of guild.resources | keyvalue" fxFlex="100%" class="resource">
+            {{ titleCase(formatWord(resource.key)) }}
+            <span>{{ resource.value.toLocaleString() }}</span>
+          </div>
+          
+          <div *ngFor="let crystal of guild.crystals | keyvalue" fxFlex="100%" class="crystal">
+            {{ titleCase(formatWord(crystal.key)) }}
+            <span>{{ crystal.value.toLocaleString() }}</span>
+          </div>
+
         </div>
-      </div>
-    </mat-card-content>
-  </mat-card>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card fxFlex="49%" class=noshadow>
+      <mat-card-header>
+        <mat-card-title>Buildings</mat-card-title>
+        <mat-card-subtitle>Total Building Levels: {{ getValuesTotal(guild.buildingLevels).toLocaleString() }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div fxLayout="row wrap" fxLayoutAlign="space-around" class="compact-list">
+          <div *ngFor="let building of guild.buildingLevels | keyvalue" fxFlex="100%" class="building">
+            {{ titleCase(formatWord(building.key)) }}
+            <span>Lv. {{ building.value }}</span>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
 
 </div>
