@@ -33,10 +33,9 @@
 
 <div fxLayout="row wrap" fxLayoutAlign="space-around" *ngIf="guild">
 
-  <!-- I'm really not even sure what I'm doing here. This is almost certainly the wrong way to do it. Someone please fix -->
-  <div fxFlex="85%" fxFlex.sm="90%" fxFlex.xs="100%">
+  <div fxFlex="85%" fxFlex.sm="90%" fxFlex.xs="100%" fxLayout="row wrap" fxLayoutGap="10px">
 
-    <mat-card fxFlex="49%" style="margin-right: 2%;" class=noshadow>
+    <mat-card fxFlex="calc(50% - 5px)" fxFlex.xs="100%" fxFlex.sm="100%">
       <mat-card-header>
         <mat-card-title>Treasury</mat-card-title>
         <mat-card-subtitle>Total Crystals: {{ getValuesTotal(guild.crystals).toLocaleString() }}</mat-card-subtitle>
@@ -59,7 +58,7 @@
       </mat-card-content>
     </mat-card>
 
-    <mat-card fxFlex="49%" class=noshadow>
+    <mat-card fxFlex="calc(50% - 5px)" fxFlex.xs="100%" fxFlex.sm="100%">
       <mat-card-header>
         <mat-card-title>Buildings</mat-card-title>
         <mat-card-subtitle>Total Building Levels: {{ getValuesTotal(guild.buildingLevels).toLocaleString() }}</mat-card-subtitle>

@@ -18,13 +18,9 @@ mat-card {
 
 .compact-list div{
   height: auto;
-  border: 1px solid #ccc;
+  border: 1px solid rgb(160, 160, 160);
 }
 
 .compact-list div span{
   float: right;
-}
-
-.noshadow{
-  box-shadow: none;
 }
