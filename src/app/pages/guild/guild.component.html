@@ -23,7 +23,7 @@
     <mat-card-content>
       <div fxLayout="row wrap" fxLayoutAlign="space-around">
         <div *ngFor="let member of guild.members | keyvalue" fxFlex="33%" class="member">
-          <a [routerLink]="['/player', { name: member.key }]">{{ member.key }}</a> {{ symbolFor(member.value) }}
+          <a [routerLink]="['/player', { name: member.key }]">{{ member.key }}</a> {{ symbolFor(member.value.rank) }}
         </div>
       </div>
     </mat-card-content>
